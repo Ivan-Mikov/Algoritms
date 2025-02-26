@@ -6,13 +6,12 @@ size_t FindIndex(int value, std::vector<int>& vec) {
     size_t left_index = 0;
     size_t right_index = vec.size() - 1;
     size_t middle_index = (left_index + right_index) / 2;
+    if (vec[left_index] == value)  
+        return left_index;        
+    if (vec[right_index] == value) 
+        return right_index;        
 
     while (vec[middle_index] != value) {
-
-        if (vec[left_index] == value)  // Не получилось без этих проверок решить,
-            return left_index;         // возможно, я просто чего-то не знаю, но
-        if (vec[right_index] == value) // происходило зацикливание, хотя пробовал
-            return right_index;        // и с округлением, и без.
 
         if (vec[middle_index] > value) {
             if (vec[right_index] >= value && vec[left_index] > value && vec[middle_index] > vec[left_index]) {
