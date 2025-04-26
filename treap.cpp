@@ -41,7 +41,7 @@ class Treap {
     };
 
     Node* root;
-    int size; // size не успел сделать 
+    int s; // size не успел сделать 
 
     Node* step(std::vector<T>& vec, std::vector<int>& pr, int l, int r) {
         if (r < l) return nullptr;
@@ -83,7 +83,7 @@ class Treap {
 
 public:
     Treap(std::vector<T>& vec) {
-        size = vec.size();
+        s = vec.size();
         std::vector<int> pr;
         for (int i = 0; i < vec.size(); ++i) {
             pr.push_back(randInt(0, 100));
@@ -99,7 +99,7 @@ public:
         auto* newNode = new Node(elem, randInt(0, 100));
         treeSmall = merge(treeSmall, newNode);
         root = merge(treeSmall, treeBig);
-        size++;
+        s++;
     }
 
     void pop(T elem) {
@@ -114,11 +114,11 @@ public:
         treeSmall = merge(treeSmall, treeElem);
         root = merge(treeSmall, treeBig);
 
-        size--;
+        s--;
     }
 
     int size() {
-        return size;
+        return s;
     }
 };
 
